@@ -176,6 +176,7 @@ fi
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
 						<string>src</string>
+						<string>src</string>
 					</array>
 					<key>MACOSX_DEPLOYMENT_TARGET</key>
 					<string>10.9</string>
@@ -216,6 +217,7 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>src</string>
 					</array>
 					<key>ICON</key>
@@ -3016,6 +3018,7 @@ fi
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
 						<string>src</string>
+						<string>src</string>
 					</array>
 					<key>MACOSX_DEPLOYMENT_TARGET</key>
 					<string>10.9</string>
@@ -3076,6 +3079,7 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>src</string>
 					</array>
 					<key>MACOSX_DEPLOYMENT_TARGET</key>
@@ -3201,6 +3205,7 @@ fi
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
 						<string>src</string>
+						<string>src</string>
 					</array>
 					<key>ICON</key>
 					<string>$(ICON_NAME_DEBUG)</string>
@@ -3251,6 +3256,7 @@ fi
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
+						<string>src</string>
 						<string>src</string>
 					</array>
 					<key>ICON</key>
