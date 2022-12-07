@@ -24,24 +24,20 @@ void ofApp::draw(){
     ofBackground(0);
     ofSetColor(255);  // White color for saved polylines
     for (int i=0; i<polylines.size(); i++) {
+
         ofPolyline polyline = polylines[i];
         polyline.draw();
 
-        vector<glm::vec3> vertices = polyline.getVertices();
-//        float normalLength = 50;
-//        ofSetColor(255,100);
-//        for (int p=0; p<500; p+=1){
-//            ofVec3f point = polyline.getPointAtPercent(p/500.0);
-//            float floatIndex = polyline.getIndexAtPercent(p/500.0);
-//            ofVec3f normal = polyline.getNormalAtIndexInterpolated(floatIndex) * normalLength;
-//            ofDrawLine(point-normal/2, point+normal/2);
-//        }
-        float tangentLength = 80;
-        for (int vertexIndex = 0; vertexIndex<vertices.size(); vertexIndex++){
-            glm::vec3 vertex = vertices[vertexIndex];
-            glm::vec3 tangent = polyline.getTangentAtIndex(vertexIndex) * tangentLength;
-            ofDrawLine(vertex-tangent/2, vertex+tangent/2);
+        ofSetColor(255, 50);
+        float tangentLength = 300;
+        for (int p=0; p<500; p+=1) {
+            ofVec3f point = polyline.getPointAtPercent(p/500.0);
+            float floatIndex = polyline.getIndexAtPercent(p/500.0);
+            ofVec3f tangent = polyline.getTangentAtIndexInterpolated(floatIndex) * tangentLength;
+            ofDrawLine(point-tangent/2, point+tangent/2);
         }
+//        ofSetColor(255,100,0);  // Orange color for active polyline
+        currentPolyline.draw();
     }
 }
 
