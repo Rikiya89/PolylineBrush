@@ -26,9 +26,23 @@ void ofApp::draw(){
     for (int i=0; i<polylines.size(); i++) {
         ofPolyline polyline = polylines[i];
         polyline.draw();
+
+        vector<glm::vec3> vertices = polyline.getVertices();
+//        float normalLength = 50;
+//        ofSetColor(255,100);
+//        for (int p=0; p<500; p+=1){
+//            ofVec3f point = polyline.getPointAtPercent(p/500.0);
+//            float floatIndex = polyline.getIndexAtPercent(p/500.0);
+//            ofVec3f normal = polyline.getNormalAtIndexInterpolated(floatIndex) * normalLength;
+//            ofDrawLine(point-normal/2, point+normal/2);
+//        }
+        float tangentLength = 80;
+        for (int vertexIndex = 0; vertexIndex<vertices.size(); vertexIndex++){
+            glm::vec3 vertex = vertices[vertexIndex];
+            glm::vec3 tangent = polyline.getTangentAtIndex(vertexIndex) * tangentLength;
+            ofDrawLine(vertex-tangent/2, vertex+tangent/2);
+        }
     }
-    ofSetColor(255,100,0);  // Orange color for active polyline
-    currentPolyline.draw();
 }
 
 //--------------------------------------------------------------
@@ -66,6 +80,7 @@ void ofApp::mouseReleased(int x, int y, int button){
     if(button == OF_MOUSE_BUTTON_LEFT){
         leftMouseButtonPressed = false;
         currentPolyline.curveTo(x,y);// Necessary duplicate for last control point
+        currentPolyline.simplify(0.75);
         polylines.push_back(currentPolyline);
         currentPolyline.clear();//Erase the vertices, allows us to start a new brush stroke
     }
